@@ -1,0 +1,10 @@
+# Core dependencies (if any external packages are needed)
+# Most functions use only Python standard library
+
+# For testing
+pytest>=7.0.0
+
+# For development (optional)
+black>=22.0.0
+flake8>=4.0.0
+mypy>=0.950
