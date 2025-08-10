@@ -16,31 +16,31 @@ help:
 
 # Run tests
 test:
-	python -m unittest discover tests -v
+	& "venv/Scripts/python.exe" -m unittest discover tests -v
 
 # Run examples
 example:
-	python examples/basic_usage.py
+	& "venv/Scripts/python.exe" examples/basic_usage.py
 
 # Clean up cache files
 clean:
-	find . -type f -name "*.pyc" -delete
-	find . -type d -name "__pycache__" -delete
-	find . -type d -name "*.egg-info" -exec rm -rf {} + 2>/dev/null || true
+	Get-ChildItem -Recurse -Name "*.pyc" | Remove-Item -Force
+	Get-ChildItem -Recurse -Name "__pycache__" | Remove-Item -Recurse -Force
+	Get-ChildItem -Recurse -Name "*.egg-info" | Remove-Item -Recurse -Force
 
 # Code linting (optional - requires flake8)
 lint:
-	flake8 src/ tests/ examples/
+	& "venv/Scripts/flake8.exe" src/ tests/ examples/
 
 # Code formatting (optional - requires black)
 format:
-	black src/ tests/ examples/
+	& "venv/Scripts/black.exe" src/ tests/ examples/
 
 # Install package
 install:
-	pip install .
+	& "venv/Scripts/pip.exe" install .
 
 # Install in development mode
 dev-install:
-	pip install -e .
-	pip install -r requirements.txt
+	& "venv/Scripts/pip.exe" install -e .
+	& "venv/Scripts/pip.exe" install -r requirements.txt
